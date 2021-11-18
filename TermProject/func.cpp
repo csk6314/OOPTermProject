@@ -69,7 +69,13 @@ int priority(char op) {
 std::string toDemical(std::string op) {
 	std::string s = op.substr(0, 2);
 	if (!s.compare("0x")) {
-		int a = stoi(op.substr(2), nullptr, 16);
+		std::string v = op.substr(2);
+		for (int i = 0; i < v.length(); i++) {
+			if (!isdigit(v[i]) && !(tolower(v[i])>='a'&&tolower(v[i])<='f')) {
+				throw 2;
+			}
+		}
+		int a = stoi(v, nullptr, 16);
 		return std::to_string(a);
 	}
 	else if (!s.compare("0b")) {

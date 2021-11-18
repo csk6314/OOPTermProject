@@ -9,7 +9,7 @@ int main() {
 	string seperator;
 	int result = 0;
 	cout << "°è»ê½Ä : ";
-	cin >> ops;
+	getline(cin,ops);
 	try {
 		postfix = convert_to_postFix(ops);
 		cout << postfix << endl;
