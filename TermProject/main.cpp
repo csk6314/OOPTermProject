@@ -26,7 +26,7 @@ int main() {
 			exit(0);
 			break;
 		case 2:
-			cout << "오류 발생 : 피연산자에 숫자가 아닌 값이 감지되었습니다." << endl;
+			cout << "오류 발생 : 피연산자에 비정상적인 값이 감지되었습니다." << endl;
 			exit(0);
 			break;
 		case 3:
@@ -39,9 +39,11 @@ int main() {
 	}
 	catch (std::out_of_range& e) {
 		cout << "오류 발생 : " <<"값의 범위를 초과하였습니다. ( "<<e.what() << " )" << endl;
+		exit(0);
 	}
 	catch (std::invalid_argument& e) {
-		cout << "오류 발생 : " << "피연산자에 비정상적인 값이 존재합니다. ( "<<e.what()<<" )" << endl;
+		cout << "오류 발생 : " << "피연산자에 비정상적인 값이 감지되었습니다. ( "<<e.what()<<" )" << endl;
+		exit(0);
 	}
 	cout << "결과 : " <<result << endl;
 }	
