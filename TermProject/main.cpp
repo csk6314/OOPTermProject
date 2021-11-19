@@ -12,7 +12,7 @@ int main() {
 	getline(cin,ops);
 	try {
 		postfix = convert_to_postFix(ops);
-		cout << postfix << endl;
+		//cout << postfix << endl;
 		result = getResult(postfix);
 	}
 	catch (int e) {
@@ -29,15 +29,19 @@ int main() {
 			cout << "오류 발생 : 피연산자에 숫자가 아닌 값이 감지되었습니다." << endl;
 			exit(0);
 			break;
+		case 3:
+			cout << "오류 발생 : 괄호쌍이 맞지 않습니다." << endl;
+			exit(0);
+			break;
 		default:
 			break;
 		}
 	}
 	catch (std::out_of_range& e) {
-		cout << "오류 발생 : " <<"비정상적을  큰값이 너무 큽니다. ( "<<e.what() << " )" << endl;
+		cout << "오류 발생 : " <<"값의 범위를 초과하였습니다. ( "<<e.what() << " )" << endl;
 	}
 	catch (std::invalid_argument& e) {
 		cout << "오류 발생 : " << "피연산자에 비정상적인 값이 존재합니다. ( "<<e.what()<<" )" << endl;
 	}
-	cout << result << endl;
+	cout << "결과 : " <<result << endl;
 }	

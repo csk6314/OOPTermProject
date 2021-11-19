@@ -124,6 +124,9 @@ std::string convert_to_postFix(std::string ops) {
 				postfix.push_back(' ');
 				opStack.pop();
 			}
+			if (opStack.empty()) {
+				throw 3;
+			}
 			opStack.pop();
 		}
 		else {
@@ -135,6 +138,9 @@ std::string convert_to_postFix(std::string ops) {
 		seperator.clear();
 	}
 	while (!opStack.empty()) {
+		if (opStack.top() == '(') {
+			throw 3;
+		}
 		postfix.push_back(opStack.top());
 		postfix.push_back(' ');
 		opStack.pop();
